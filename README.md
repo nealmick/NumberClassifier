@@ -1,5 +1,5 @@
 # NumberClassifier
-PyTorch NumberClassifier
+PyTorch NumberClassifier with web app interface.  Inputs drawn numbers and shows output on graph.  Model trained on mnist hand written number dataset.
 
 
 #### Install:
