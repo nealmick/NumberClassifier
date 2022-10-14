@@ -1,5 +1,5 @@
 # NumberClassifier
-PyTorch NumberClassifier with web app interface.  Inputs drawn numbers and shows output on graph.  Model trained on mnist hand written number dataset.
+PyTorch NumberClassifier with web app interface.  User inputs drawn number, the drawing is then classified 0-9.  The model output classifications are then displayed on a graph.  The Model was trained on the mnist hand written number dataset.
 
 
 #### Install:
