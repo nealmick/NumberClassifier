@@ -8,9 +8,92 @@ var g = [];
 var x = 28
 var y = 28
 var number = "0";
+let res = [1,1,1,1,1,1,1,1,1,1]
 g = makeGrid(g)
 $(d).mouseenter(function(){isOnDiv=true;});
 $(d).mouseleave(function(){isOnDiv=false;});
+ //document.getElementById("res").innerText = aStr
+ const labels = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+  ];
+const data = {
+labels: labels,
+datasets: [{
+    label: 'output: ',
+    data: res,
+    backgroundColor: [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(255, 159, 64, 0.2)',
+    'rgba(255, 205, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+    'rgb(255, 99, 132)',
+    'rgb(255, 159, 64)',
+    'rgb(255, 205, 86)',
+    'rgb(75, 192, 192)',
+    'rgb(54, 162, 235)',
+    'rgb(153, 102, 255)',
+    'rgb(201, 203, 207)',
+    'rgb(201, 203, 207)',
+    'rgb(201, 203, 207)',
+    'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+}]
+};
+const config = {
+    type: 'bar',
+    data: data,
+    options: {
+        plugins: {
+            legend: {
+              display: false
+            }
+          },
+        scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Number'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Value'
+              },
+              min: 10,
+              max: -10,
+              ticks: {
+                suggestedMin: -10,    // minimum will be 0, unless there is a lower value.
+                // OR //
+                //beginAtZero: true   // minimum value will be 0.
+                steps: 20,
+                stepValue: 1,
+                }
+
+            }
+        }
+    },
+  };
+
+const myChart = new Chart(document.getElementById('myChart'),config);
 
 
 document.body.onmousedown = function() { 
@@ -92,7 +175,7 @@ function updateGrid(foo,oof){
     
     
     
-        g[oof+1][foo+1]=b
+    g[oof+1][foo+1]=b
     g[oof][foo+1]=b
     g[oof-1][foo+1]=b
     
@@ -155,7 +238,7 @@ function prepareSend(g){
 }
 
 
-function getNumber(number){
+function getNumber(number,res,myChart){
     state=2
     $.ajax(
         {
@@ -180,90 +263,14 @@ function getNumber(number){
                 if(res[i]>0 && res[i]<.5){
                     res[i]+=.5
                 }
+                myChart.data.datasets[0].data[i]= res[i];
+                myChart.update();
 
             }
-            //document.getElementById("res").innerText = aStr
-            const labels = [
-                '0',
-                '1',
-                '2',
-                '3',
-                '4',
-                '5',
-                '6',
-                '7',
-                '8',
-                '9',
-              ];
-            const data = {
-            labels: labels,
-            datasets: [{
-                label: 'output: ',
-                data: res,
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)',
-                'rgb(201, 203, 207)',
-                'rgb(201, 203, 207)',
-                'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-            };
-            const config = {
-                type: 'bar',
-                data: data,
-                options: {
-                    plugins: {
-                        legend: {
-                          display: false
-                        }
-                      },
-                    scales: {
-                        x: {
-                          title: {
-                            display: true,
-                            text: 'Number'
-                          }
-                        },
-                        y: {
-                          title: {
-                            display: true,
-                            text: 'Value'
-                          },
-                          min: 10,
-                          max: -10,
-                          ticks: {
-                            suggestedMin: -10,    // minimum will be 0, unless there is a lower value.
-                            // OR //
-                            //beginAtZero: true   // minimum value will be 0.
-                            steps: 20,
-                            stepValue: 1,
-                            }
-    
-                        }
-                    }
-                },
-              };
+           
             
-            const myChart = new Chart(document.getElementById('myChart'),config);
+
+
 
         }
         })
@@ -271,11 +278,6 @@ function getNumber(number){
         return number
 
 }
-
-
-
-
-
 
 
 
