@@ -1,0 +1,58 @@
+
+
+{% load static %}
+
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- icons -->
+        <link href="{% static 'nc/style.css'%}" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</head>
+	<body scroll="no" style="background-color:#383838; overflow: hidden" >
+    <title>Number Classifier!</title>
+    <center>
+        <div style="color: white;">
+            <h1 id="num" >
+            Number Classifier! <i style="font-size: 0.8em; color:#17a2b8" class="fa fa-solid fa-feather"></i>
+            </h1>
+        </div>
+        
+    </center>
+    <div id="table">
+    
+    </div>
+    <!--
+    <div style="color: white;">
+        <center>
+
+            <h4 id="res">
+
+            </h4>
+        </center>
+    </div>
+    -->
+    <center>
+
+
+        <div style="height: 450px;width: 450px;">
+            <canvas id="myChart"></canvas>
+        </div>
+    </center>
+    <div class="bottom-left">
+        <button class="btn btn-outline-info " id="reset-btn" onclick="restart()">Clear</button>
+
+    </div>
+
+    <script  src="{% static 'nc/nc.js'%}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	
+</body>
+</html> 
