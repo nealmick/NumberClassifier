@@ -9,6 +9,7 @@ var x = 28
 var y = 28
 var number = "0";
 let res = [1,1,1,1,1,1,1,1,1,1]
+var tick = 0
 g = makeGrid(g)
 $(d).mouseenter(function(){isOnDiv=true;});
 $(d).mouseleave(function(){isOnDiv=false;});
@@ -31,28 +32,28 @@ datasets: [{
     label: 'output: ',
     data: res,
     backgroundColor: [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(255, 159, 64, 0.2)',
-    'rgba(255, 205, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
     'rgba(201, 203, 207, 0.2)',
     'rgba(201, 203, 207, 0.2)',
     'rgba(201, 203, 207, 0.2)',
     'rgba(201, 203, 207, 0.2)'
     ],
     borderColor: [
-    'rgb(255, 99, 132)',
-    'rgb(255, 159, 64)',
-    'rgb(255, 205, 86)',
-    'rgb(75, 192, 192)',
-    'rgb(54, 162, 235)',
-    'rgb(153, 102, 255)',
-    'rgb(201, 203, 207)',
-    'rgb(201, 203, 207)',
-    'rgb(201, 203, 207)',
-    'rgb(201, 203, 207)'
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8',
+    '#17a2b8'
     ],
     borderWidth: 1
 }]
@@ -61,8 +62,12 @@ const config = {
     type: 'bar',
     data: data,
     options: {
+
+
         plugins: {
+
             legend: {
+
               display: false
             }
           },
@@ -70,17 +75,22 @@ const config = {
             x: {
               title: {
                 display: true,
+                color: '#17a2b8',
                 text: 'Number'
-              }
+              },
+                ticks: {
+                    color: '#17a2b8'
+                }
             },
             y: {
               title: {
-                display: true,
+                display: false,
                 text: 'Value'
               },
               min: 10,
               max: -10,
               ticks: {
+                color: '#17a2b8',
                 suggestedMin: -10,    // minimum will be 0, unless there is a lower value.
                 // OR //
                 //beginAtZero: true   // minimum value will be 0.
@@ -101,24 +111,26 @@ document.body.onmousedown = function() {
     if (isOnDiv){
         if (lastClicked){
             lastClicked.className='clicked';
-            updateGrid(lastClickedX+7,lastClickedY+7)
+            updateGrid(lastClickedX+3,lastClickedY+3)
         } 
 
     }
 }
 document.body.onmouseup = function() {
     mouseDown = false;
+    //getNumber(number,res,myChart)
+
 }
 
 
-var grid = clickableGrid(x/2,y/2,function(el,row,col,i){
+var grid = clickableGrid(x-6,y-6,function(el,row,col,i){
     //console.log("x:",col);
     //console.log("y:",row);
 
 
     if (mouseDown == true){
         el.className='clicked';
-        updateGrid(col+7,row+7)
+        updateGrid(col+3,row+3)
         //printGrid()
     }
     //if (lastClicked) lastClicked.className='';
@@ -157,22 +169,36 @@ function clickableGrid( rows, cols, callback ){
 function updateGrid(foo,oof){
     a = '2'
     b = '1'
+    c = '1'
     g[oof][foo]=a
 
-    if(g[oof+1][foo]!=2){
+
+    if(g[oof+1][foo]!=2&&g[oof+1][foo]!=3){
         g[oof+1][foo]=b
     }
-    if(g[oof-1][foo]!=2){
+    if(g[oof-1][foo]!=2&&g[oof-1][foo]!=3){
         g[oof-1][foo]=b
     }
-    if(g[oof][foo+1]!=2){
+    if(g[oof][foo+1]!=2&&g[oof][foo+1]!=3){
         g[oof][foo+1]=b
     }
-    if(g[oof][foo-1]!=2){
+    if(g[oof][foo-1]!=2&&g[oof][foo-1]!=3){
         g[oof][foo-1]=b
     }
     /*
-    
+
+    if(g[oof-1][foo+1]!=2&&g[oof-1][foo+1]!=3){
+        g[oof-1][foo+1]=c
+    }
+    if(g[oof+1][foo+1]!=2&&g[oof+1][foo+1]!=3){
+        g[oof+1][foo+1]=c
+    }
+    if(g[oof+1][foo-1]!=2&&g[oof+1][foo-1]!=3){
+        g[oof+1][foo-1]=c
+    }
+    if(g[oof-1][foo-1]!=2&&g[oof-1][foo-1]!=2){
+        g[oof-1][foo-1]=c
+    }
     
     
     g[oof+1][foo+1]=b
@@ -252,8 +278,10 @@ function getNumber(number,res,myChart){
             success: function(asdf) {
             number = asdf.asdf
             res = asdf.fdsa
-            document.getElementById("num").innerText = 'Number is: '+number
+            //document.getElementById("num").innerText = 'Number is: '+number
             let aStr = ''
+            maxV = -10
+            let maxK = 0
             for(i = 0; i<res.length;i+=1){
                 
                 res[i] = (res[i] + 3)*2
@@ -263,13 +291,20 @@ function getNumber(number,res,myChart){
                 if(res[i]>0 && res[i]<.5){
                     res[i]+=.5
                 }
+                if(res[i]>maxV){
+                    maxV = res[i]
+                    maxK = i
+                }
+                myChart.data.datasets[0].backgroundColor[i] = 'rgba(201, 203, 207, 0.2)'
+                myChart.data.datasets[0].borderColor[i] = '#17a2b8'
                 myChart.data.datasets[0].data[i]= res[i];
                 myChart.update();
 
             }
-           
+            myChart.data.datasets[0].backgroundColor[maxK] = '#17a2b8'
+            myChart.data.datasets[0].borderColor[maxK] = '#2D2D2D'
             
-
+            myChart.update();
 
 
         }
@@ -278,6 +313,9 @@ function getNumber(number,res,myChart){
         return number
 
 }
+
+
+
 
 
 

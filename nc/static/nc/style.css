@@ -11,6 +11,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: 0.3s;
 
 }
 .grid td.clicked {
@@ -19,6 +20,7 @@
 }
 .grid td:hover {
     background-color: #17a2b8;
+    transition: 0.5s;
 }
 element.style {
 }

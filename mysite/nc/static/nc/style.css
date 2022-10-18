@@ -1,7 +1,11 @@
-.grid { margin:1em auto; border-collapse:collapse }
+.grid { margin:1em auto;
+ border-collapse:collapse;
+ height: 400px;
+ width: 400px;
+  }
 .grid td {
     cursor:pointer;
-    width:30px; height:30px;
+    width:15px; height:15px;
     border:1px solid #17a2b8;
     text-align:center;
     font-family:sans-serif; font-size:13px;color:#ccc;
@@ -28,3 +32,10 @@ element.style {
     bottom: 10px;
     left: 10px;
   }
+body{
+    position: relative;
+}
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}

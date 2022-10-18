@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e7tdz!t+1^7+#jlbtg4#kwz-(fg2=x(#ul+7p%$ep5m$4z%aqs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['njm.rocks']
 
 
 # Application definition
