@@ -6,7 +6,6 @@ https://nealmick.com/nc/
 
 <img src="https://i.imgur.com/bYOAdaW.png" width="500" height="600" />
 
-
 #### Install:
 ```bash
 git clone https://github.com/nealmick/numberclassifier
