@@ -1,5 +1,7 @@
 # NumberClassifier
-PyTorch NumberClassifier with web app interface.  User inputs drawn number, the drawing is then classified 0-9.  The model output classifications are then displayed on a graph.  Each drawing is represented as a 28 x 28 grid. The neural network is made up of 2 fully connected layers using the rectified linear unit activation function. The output layer is 10 softmax values representing the targets 0-9. The model was built with PyTorch and trained on over 60,00 examples from the MNIST dataset.
+
+The model is trained on over 60,000 examples from the MNIST dataset and is able to accurately classify handwritten numbers. I implemented this project using the PyTorch framework and optimized the model's performance through techniques such as data augmentation and regularization. This project showcases my ability to use cutting-edge machine learning techniques and tools, as well as my understanding of neural network architecture and training.
+
 
 # Live:
 https://nealmick.com/nc/
