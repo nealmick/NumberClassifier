@@ -4,7 +4,7 @@ The model is trained on over 60,000 examples from the MNIST dataset and is able 
 
 
 # Live:
-https://nealmick.com/nc/
+https://app.nealmick.com/nc/
 
 <img src="https://i.imgur.com/bYOAdaW.png" width="500" height="600" />
 
